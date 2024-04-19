@@ -7,7 +7,6 @@
     {
       "src": "/(.*)",
       "dest": "/",
-      "Access-Control-Allow-Origin": "*",
     }
   ]
 
