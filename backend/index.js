@@ -10,12 +10,12 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-var corsOptions = {
+app.use(cors({
   origin: '*',
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+}))
 
 //connecting to mongoDb Cloud
 db.connectDB()
