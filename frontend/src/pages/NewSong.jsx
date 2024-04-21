@@ -46,7 +46,7 @@ const NewSong = () => {
         </div>
         <button className='bg-green-light p-2 rounded-sm' onClick={async () => {
           console.log("inside the async function: ", currSong)
-          await axios.post(`http://localhost:2000/song`, { data: currSong })
+          await axios.post(`https://project-lyrics-projector-server.vercel.app/song`, { data: currSong })
             .then((response) => {
               console.log("submitted add song contents: ", response.data.msg)
               if(response.data.msg){
