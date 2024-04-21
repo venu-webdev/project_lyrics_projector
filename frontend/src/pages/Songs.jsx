@@ -10,7 +10,10 @@ const Songs = () => {
     .then((response)=>{
       console.log(response.data.songs)
       setSongs(response.data.songs)
-    })
+    }).
+    catch((e)=>{
+      console.error(e)
+    }
   },[])
 
   const [songs,setSongs] = useState([])
