@@ -51,7 +51,7 @@ const Songs = () => {
                     console.log(e.target.id);
                     setCurrSong(song)
                   }}>
-                    <SongTab title={song.title} id={song._id} number={i + 1} />
+                    <SongTab enTitle={song.enTitle} title={song.title} id={song._id} number={i + 1} />
                   </div>
                 )
               })}
@@ -63,7 +63,7 @@ const Songs = () => {
                   console.log(e.target.id);
                   setCurrSong(song)
                 }}>
-                  <SongTab title={song.title} id={song._id} number={i + 1} />
+                  <SongTab enTitle={song.enTitle} title={song.title} id={song._id} number={i + 1} />
                 </div>
               )
             })}
@@ -75,7 +75,7 @@ const Songs = () => {
       <div className='w-[600px] font-anektelugu text-white'>
         <div className='flex justify-start items-center gap-2 mb-4'>
           <h2 className='text-2xl mt-3'>{currSong.title}</h2>
-          <div className='flex hover:bg-green-light rounded-sm w-6 h-6 justify-center items-center'>
+          <div className='flex hover:bg-green-light rounded-sm w-6 h-6 justify-center items-center pt-2'>
             <NavLink to='/edit' state={{ song: currSong }} ><EditIcon fillColor={'#65a019'}></EditIcon></NavLink>
           </div>
         </div>
