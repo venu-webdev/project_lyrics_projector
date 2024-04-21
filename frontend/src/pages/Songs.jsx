@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import SongTab from './../components/SongTab';
 import axios from 'axios';
-import { useOutletContext } from 'react-router-dom';
+import { NavLink, useOutletContext } from 'react-router-dom';
+import EditIcon from '../icons/EditIcon';
+import DeleteIcon from '../icons/DeleteIcon';
 
 const Songs = () => {
   // axios.defaults.withCredentials = true;
@@ -9,7 +11,11 @@ const Songs = () => {
     axios.get("https://project-lyrics-projector-server.vercel.app/")
     .then((response)=>{
       console.log(response.data.songs)
+      // if(response.data.msg){
+      //   alert(response.data.msg)
+      // }
       setSongs(response.data.songs)
+      setCurrSong(response.data.songs[0])
     }).
     catch((e)=>{
       console.error(e)
@@ -35,8 +41,7 @@ const Songs = () => {
   },[query])
   return (
     <div className='flex justify-center gap-10 h-[80%]  px-4 py-8'>
-      <div className='flex flex-col gap-2 overflow-scroll'>
-          
+      <div className='flex flex-col gap-2 overflow-auto'>
           {songs.length>0?(
             newSongs.length==0?(
               <div>
@@ -62,17 +67,16 @@ const Songs = () => {
             })}
           </div>
           ): <div>No songs found</div>}
-          {/* <button onClick={(e)=>{console.log(e.target.id)}}>
-            <SongTab title='one' number='1' id ="1" ></SongTab>
-          </button>
-          <button onClick={(e)=>console.log(e.target.id)}>
-            <SongTab title='two' number='1' id ="2" active='true'></SongTab>
-          </button> */}
 
 
     </div>
-    <div className='w-[600px] overflow-scroll font-anektelugu text-white'>
-      <h2 className='text-2xl my-5'>{currSong.title}</h2>
+    <div className='w-[600px] overflow-auto font-anektelugu text-white'>
+      <div className='flex justify-start items-center gap-2 mb-4'>
+        <h2 className='text-2xl mt-3'>{currSong.title}</h2>
+        <div className='flex hover:bg-green-light rounded-sm w-6 h-6 justify-center items-center'>
+          <NavLink  to='/edit'
+            state={{song:currSong}} ><EditIcon  fillColor={'#65a019'}></EditIcon></NavLink></div>
+      </div>
       <pre className='font-anektelugu '>
       {currSong.content}
       </pre>

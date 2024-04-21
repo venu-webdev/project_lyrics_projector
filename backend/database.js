@@ -90,8 +90,8 @@ async function findSongById(id){
   return foundSong
 }
 
-async function update_doc(id, {title,content}){
-  const foundSong = await songModel.updateOne({_id: id}, {title:title,content:content})
+async function update_doc(id, {title,content,enTitle}){
+  const foundSong = await songModel.updateOne({_id: id}, {title,enTitle,content})
   console.log("----->foundSong: ", foundSong.modifiedCount)
   console.log("updated the song!")
   return foundSong

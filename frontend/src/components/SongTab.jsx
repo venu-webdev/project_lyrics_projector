@@ -11,10 +11,10 @@ const SongTab = ({title,number,id}) => {
             <div className='pr-2'>{number}</div>
             <div className='font-anektelugu mt-2' >{title}</div>
         </div>
-        <div className='flex gap-2'>
+        {/* <div className='flex gap-2'>
             <div className='flex hover:bg-green-light rounded-sm w-6 h-6 justify-center items-center'><EditIcon  id={id} fillColor={'#65a019'}></EditIcon></div>
             <div className='flex hover:bg-red-300 rounded-sm w-6 h-6 justify-center items-center'><DeleteIcon id={id}  fillColor={'#65a019'}></DeleteIcon></div>
-        </div>
+        </div> */}
     </div>
   )
 }

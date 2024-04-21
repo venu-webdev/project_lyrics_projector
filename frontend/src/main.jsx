@@ -7,6 +7,7 @@ import Songs from './pages/Songs.jsx'
 import SongsPreview from './pages/SongsPreview.jsx'
 import SongEdit from './pages/SongEdit.jsx'
 import NewSong from './pages/NewSong.jsx'
+import MissingPage from './pages/MissingPage.jsx'
 
 const router = createBrowserRouter(
   [{
@@ -14,7 +15,7 @@ const router = createBrowserRouter(
     element: <App/>,
     children:[
       {
-        path:'/songs',
+        path:'/',
         element: <Songs/>
       },
       {
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
         element: <NewSong/>
       }
     ],
-    errorElement: <div>404 | Not found</div>,
+    errorElement: <MissingPage/>,
   },
   
 ]

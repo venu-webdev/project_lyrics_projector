@@ -4,7 +4,6 @@ const cors = require('cors')
 const db = require('./database.js')
 const app = express();
 const port = 2000;
-//edited again
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -67,7 +66,7 @@ app.post("/search", async (req,res)=>{
 //adding a song to db
 app.post("/song",async (req,res)=>{
 
-  let addStatus = await db.addSong(req.body)
+  let addStatus = await db.addSong(req.body.data)
 
   if(!(addStatus)){
     return res.send({
@@ -84,13 +83,18 @@ app.post("/song",async (req,res)=>{
 
 //editing a song
 app.put("/song/:id",async (req,res)=>{
-  // console.log("client: here you go: ",req.body.data)
+  console.log("client: here you go: ",req.body.data)
   let response = await db.update_doc(req.params.id,req.body.data)
-  let songs = await db.allSongs()
-  // console.log("response after updating data: ",response)
+  // let songs = await db.getAllSongs()
+  if(response){
+    return res.json({
+      msg: "successfully updated the song"
+    })
+  }
   return res.json({
-    songs: songs
+    msg: "unable to update the song"
   })
+  // console.log("response after updating data: ",response)
 })
 
 //get song by id
