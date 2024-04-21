@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useOutletContext } from 'react-router-dom';
 
 const Songs = () => {
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
   useEffect(()=>{
     axios.get("https://project-lyrics-projector-server.vercel.app/")
     .then((response)=>{
