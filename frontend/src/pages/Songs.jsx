@@ -13,7 +13,7 @@ const Songs = () => {
     }).
     catch((e)=>{
       console.error(e)
-    }
+    })
   },[])
 
   const [songs,setSongs] = useState([])
